@@ -1,0 +1,18 @@
+[project]
+name = "nba-arb-bot"
+version = "0.1.0"
+description = "NBA Arbitrage Bot - A local application for NBA arbitrage opportunities"
+requires-python = ">=3.11"
+readme = "README.md"
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]

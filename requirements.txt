@@ -1,0 +1,19 @@
+# NBA Arbitrage Bot - Dependencies
+# =================================
+# Install with: pip install -r requirements.txt
+
+# Core dependencies
+# ---------------------------------
+pyyaml>=6.0.1          # YAML config file parsing
+pydantic>=2.5.0        # Configuration validation and type safety
+apscheduler>=3.10.0    # Timezone-aware job scheduling
+httpx>=0.26.0          # Modern HTTP client for web requests
+beautifulsoup4>=4.12.0 # HTML parsing for web scraping
+playwright>=1.40.0     # Browser automation for JS-rendered pages
+pdfplumber>=0.10.0    # PDF parsing for NBA injury reports
+
+# Development dependencies
+# ------------------------
+pytest>=7.4.0
+black>=23.0.0
+ruff>=0.1.0

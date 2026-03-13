@@ -1,0 +1,94 @@
+# =============================================================================
+# NBA Arbitrage Bot - Configuration
+# =============================================================================
+# This file contains all configurable parameters for the arbitrage bot.
+# Copy this file to config.local.yaml for local overrides (gitignored).
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Scheduling Configuration
+# -----------------------------------------------------------------------------
+
+# scan_start_time: The time of day (in EST) when the bot begins its first scan.
+# Format: "HH:MM" in 24-hour format.
+# Example: "00:00" = midnight EST, "09:30" = 9:30 AM EST
+scan_start_time: "00:00"
+
+# scan_interval: How often the bot scans for arbitrage opportunities.
+# Format: Integer representing hours between scans.
+# Example: 1 = every hour, 4 = every 4 hours, 24 = once per day
+scan_interval: 1
+
+# -----------------------------------------------------------------------------
+# Timezone Configuration
+# -----------------------------------------------------------------------------
+
+# timezone: The timezone used for all time-based operations.
+# Uses IANA timezone database names.
+# Common values: "America/New_York" (EST/EDT), "UTC", "America/Los_Angeles" (PST/PDT)
+# NBA games are typically scheduled in Eastern Time, so EST is recommended.
+timezone: "America/New_York"
+
+# -----------------------------------------------------------------------------
+# Trading Configuration
+# -----------------------------------------------------------------------------
+
+# trade_size_usdc: The amount in USDC to use for each trade.
+# This is the base stake amount for arbitrage positions.
+# Example: 100 = $100 USDC per trade
+trade_size_usdc: 100
+
+# opener_edge_threshold: Minimum edge (as a decimal) required to open a position.
+# This is the minimum profit margin before the bot considers a trade worthwhile.
+# Example: 0.03 = 3% edge required (if you bet $100, expected profit must be >= $3)
+# Higher values = fewer but safer trades, Lower values = more trades but riskier
+opener_edge_threshold: 0.03
+
+# -----------------------------------------------------------------------------
+# Operation Mode
+# -----------------------------------------------------------------------------
+
+# dry_run: When true, the bot simulates trades without executing real transactions.
+# Use this for testing and validation before going live.
+# true  = simulation mode (no real money at risk, logs what would happen)
+# false = live mode (executes real trades - USE WITH CAUTION)
+dry_run: true
+
+# -----------------------------------------------------------------------------
+# Logging Configuration (optional, for future use)
+# -----------------------------------------------------------------------------
+
+logging:
+  # Log level: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  level: "INFO"
+  # Log to file in addition to console
+  file_enabled: false
+  file_path: "logs/nba_arb_bot.log"
+
+# -----------------------------------------------------------------------------
+# Email Notification Configuration
+# -----------------------------------------------------------------------------
+# Send email alerts when STRONG signals are detected.
+#
+# SETUP INSTRUCTIONS FOR YAHOO:
+# 1. Go to: https://login.yahoo.com/account/security
+# 2. Enable "Two-step verification" (required)
+# 3. Click "Generate app password"
+# 4. Select "Other App", name it "NBA Arb Bot"
+# 5. Copy the 16-character password and paste below
+#
+# IMPORTANT: Use the app password, NOT your regular Yahoo password!
+
+email:
+  # Enable/disable email notifications
+  enabled: true
+  
+  # Your Yahoo email address
+  sender_email: "barrylau9@yahoo.com"
+  
+  # Yahoo app password (16 characters, no spaces)
+  # Generate at: https://login.yahoo.com/account/security
+  sender_password: "nddbkrkhmmuftpkq"
+  
+  # Recipient email (leave empty to send to sender_email)
+  recipient_email: "barrylau9@yahoo.com"

@@ -13,8 +13,15 @@ P01–P05 are implemented and verified offline. The owner authorized P02/P03/P04
 using synthetic data only; see docs/P01-OFFLINE-PLANNER.md,
 docs/P02-SYNTHETIC-BOOKMAKER.md, docs/P03-SYNTHETIC-POLYMARKET.md,
 docs/P04-SYNTHETIC-PAIRED-COLLECTOR.md and docs/P05-SYNTHETIC-REPORTS-RESULTS.md.
-Paid subscriptions,
-deployment, background collection, notifications, betting and trading remain outside scope.
+The owner subsequently selected Cloudflare and Supabase and authorized reusing the
+existing Turing project for NBA. The project was renamed and its unrelated Genie deployment
+integration disconnected. See docs/P05A-CLOUD-FOUNDATION-PLAN.md. Cloud runtime/schema
+implementation and unattended collection are not yet complete.
+The owner then authorized creating the NBA Cloudflare application. A free-plan Worker
+named nba-arb-bot now serves only the vendor Hello World starter; it has no credentials,
+bindings, Cron triggers or queue consumers. This does not implement A02/A03 or collection.
+Paid subscriptions, collector/schedule activation, notifications, betting and trading
+remain outside this application-shell task.
 Work on the next development milestone when requested. Record proposals separately from
 confirmed owner requirements.
 

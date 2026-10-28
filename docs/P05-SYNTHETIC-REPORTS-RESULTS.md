@@ -1,5 +1,7 @@
 # P05 daily reports, CSV exports and results — synthetic implementation
 
+Historical P05 checkpoint; cloud-platform decisions and setup are in [P05A](P05A-CLOUD-FOUNDATION-PLAN.md).
+
 Date: 2026-10-28. Implemented offline, using the P04 synthetic collector and temporary
 databases. Live collection remains disabled. No network transport, background service,
 legacy report/email entrypoint, paid plan or trading was activated.

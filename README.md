@@ -15,11 +15,17 @@ actual source coverage, provider, budget and live deployment remain unresolved.
 - [Preliminary code review](docs/PRELIMINARY-CODE-REVIEW.md)
 - [Repository agent instructions](AGENTS.md)
 - [ChatGPT Project instructions](docs/CHATGPT-PROJECT-INSTRUCTIONS.md)
+- [Selected Cloudflare/Supabase foundation plan](docs/P05A-CLOUD-FOUNDATION-PLAN.md)
 - [Matching-file upload and refresh guide](docs/CHATGPT-PROJECT-SETUP.md)
 
 GitHub is canonical. ChatGPT Project files are explicit commit/hash snapshots.
 The owner authorized P01 and then P02/P03/P04/P05 with synthetic data only on 2026-10-28.
-Live activation remains outside the current scope.
+The owner subsequently selected Cloudflare hosting/compute and Supabase PostgreSQL,
+reusing the existing project renamed nba-arb-bot. Its old unrelated deployment integration
+was disconnected; data was preserved. [P05A](docs/P05A-CLOUD-FOUNDATION-PLAN.md) records
+verified setup and the planned synthetic cloud foundation. The owner subsequently
+authorized a free-plan Cloudflare Worker application shell, now serving Hello World only.
+No NBA cloud schema, collector implementation, schedule or live transport is installed. Live activation remains outside the current scope.
 
 ## Legacy prototype status
 
@@ -108,7 +114,7 @@ PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m nba_arb_bot.recorder.reporti
 Use a new output directory. The demo exports Markdown/JSON, seven CSVs and a hash manifest.
 Reports require an explicit knowledge cutoff; scores and market payouts are tracked separately.
 The full offline suite has 183 passing tests (39 P05 + 144 retained). There is no scheduled
-report service, email, live result feed, P&L or execution. P06 spreads/totals is next proposed work.
+report service, email, live result feed, P&L or execution. P05A cloud foundation is next proposed work; P06 spreads/totals remains a separate milestone.
 
 ## Legacy setup reference
 

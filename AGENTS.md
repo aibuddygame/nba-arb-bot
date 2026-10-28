@@ -17,8 +17,11 @@ The owner subsequently selected Cloudflare and Supabase and authorized reusing t
 existing Turing project for NBA. The project was renamed and its unrelated Genie deployment
 integration disconnected. See docs/P05A-CLOUD-FOUNDATION-PLAN.md. Cloud runtime/schema
 implementation and unattended collection are not yet complete.
-Paid subscriptions, deployment/schedule activation, notifications, betting and trading
-remain outside this setup task.
+The owner then authorized creating the NBA Cloudflare application. A free-plan Worker
+named nba-arb-bot now serves only the vendor Hello World starter; it has no credentials,
+bindings, Cron triggers or queue consumers. This does not implement A02/A03 or collection.
+Paid subscriptions, collector/schedule activation, notifications, betting and trading
+remain outside this application-shell task.
 Work on the next development milestone when requested. Record proposals separately from
 confirmed owner requirements.
 

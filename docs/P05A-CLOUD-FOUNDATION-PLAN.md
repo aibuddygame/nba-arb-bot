@@ -1,8 +1,8 @@
 # P05A Cloudflare and Supabase foundation — selected plan
 
 Decision date: 2026-10-28, Asia/Singapore.
-Status: platform selection confirmed; existing Supabase project repurposed and verified.
-Cloud runtime, PostgreSQL recorder schema and unattended collection are not implemented.
+Status: platform selection, Supabase repurposing and free-plan Cloudflare Worker shell verified.
+Recorder runtime, PostgreSQL recorder schema and unattended collection are not implemented.
 P01–P05 remain the verified offline SQLite reference. Live collection is disabled.
 
 ## Owner decision and current setup
@@ -27,16 +27,21 @@ Private account references, exact setup receipts and screenshots are kept in ign
 exports-private/, outside the public documentation and ChatGPT reference pack. No API key,
 database password, organization-member email or production raw body belongs in this repo.
 
-At preparation, the owner is creating a Cloudflare account. Account access, selected account,
-Workers plan, deployment permissions and billing are not yet verified. No Worker, schedule,
-domain route or paid subscription has been created. This is not a completed deployment.
+The owner created a Cloudflare account, verified email and explicitly authorized an
+application. Dashboard access and the Workers Free current-plan label were verified. A Worker
+named nba-arb-bot was created with Cloudflare's unchanged Hello World template. Its public
+workers.dev URL returned Hello World! in an independent browser tab. Settings showed no
+variables/secrets, connected bindings, Cron triggers, queue consumers or Git build connection.
+The dashboard reported the deployment Ready. This is a deployed starter shell, not the NBA
+collector, synthetic replay, database integration or dashboard. No paid upgrade or custom
+domain/zone route was configured. Endpoint/account-specific evidence remains private.
 
 ## Proposed architecture
 
 | Component | Responsibility | Current state |
 | --- | --- | --- |
 | GitHub | Canonical source, review and versioned migrations | Existing P01–P05 draft stack; no new merges claimed |
-| Cloudflare Worker | Bounded scheduled dispatcher and collector, later report endpoints | Selected platform; compatibility/deployment unimplemented |
+| Cloudflare Worker | Bounded scheduled dispatcher and collector, later report endpoints | Hello World shell deployed; collector compatibility/runtime unimplemented |
 | Supabase PostgreSQL | Jobs, leases, observations, pairs, results and immutable audits | Existing project repurposed; NBA schema unimplemented |
 | Supabase private Storage | Candidate raw-evidence and report objects | Proposed new buckets; no NBA bucket created |
 | Cloudflare static hosting | Future report UI and separate project homepages/domains | Proposed; none deployed in this task |
@@ -52,7 +57,7 @@ and validate explicit timing tolerances in the synthetic cloud pilot before a li
 Choose one authoritative dispatcher; do not simultaneously enable Cloudflare Cron and
 Supabase Cron for the same work. No scheduler is enabled by selecting the architecture.
 
-The deployed Worker runtime is a decision after a compatibility spike. Retain Python
+The collector Worker runtime is a decision after a compatibility spike. Retain Python
 reference logic; verify Python Workers/package support or select a small Worker-side
 implementation with parity tests. Supabase supplies PostgreSQL and APIs; it does not make
 the existing Python SQLite code deployable without modification.
@@ -61,7 +66,7 @@ the existing Python SQLite code deployable without modification.
 
 | Unit | Required work and evidence | State |
 | --- | --- | --- |
-| A01 | Confirm platform choice; resume/audit reusable project; rename it; disconnect unrelated deployment; preserve existing state | Verified setup only |
+| A01 | Confirm platform choice; resume/audit reusable project; rename it; disconnect unrelated deployment; preserve state; create authorized credential-free Worker shell | Verified setup and starter only |
 | A02 | Review versioned PostgreSQL schema, least-privilege access, lease fencing, idempotency and transaction boundaries; exercise migrations and recovery in a nonproduction test environment | Planned; not implemented |
 | A03 | Implement a bounded Worker runner with explicit synthetic-only mode and no live credentials; verify compatibility against PostgreSQL | Planned; not implemented |
 | A04 | Explicitly deploy and enable a bounded synthetic schedule; prove unattended runs, duplicates/retries, restarts, missed slots, timezones, daily report/export hashes and cost measurements | Planned; requires separate schedule activation |
@@ -104,7 +109,7 @@ Do not load legacy config.yaml, invoke legacy reporting/email or store provider 
 an offline task. No automatic production migration or scheduled data collection is enabled
 by the repository updates in this change.
 
-Supabase remains Free for this setup. Free-tier capacity, availability, pausing and backup
+Supabase and Cloudflare Workers remain Free for this setup. Free-tier capacity, availability, pausing and backup
 limits must be assessed before live use. Cloudflare Workers Paid has a published account
 minimum of US$5/month plus usage, but no paid purchase was authorized or performed here.
 No total operating cost is guaranteed: Supabase compute/storage, raw retention, provider
@@ -118,15 +123,16 @@ just because a website has its own domain.
 
 ## Validation and next step
 
-This is setup and planning, with no recorder-code or database-schema change. Project name
+This is setup and planning, with no recorder-code or database-schema change. The sole
+deployed Worker code is the vendor Hello World template, not code from the Python recorder. Project name
 and healthy state were read back through Supabase; the integration page showed no selected
 GitHub repository after disconnection. The legacy application table remained present with
 zero rows. Documentation links, privacy/ignore rules and published-file equality are checked
 with the handoff. Earlier P05 evidence remains 183 passing offline tests; no new runtime or
 cloud test result is claimed by this document.
 
-Next: verify Cloudflare account access, then implement A02/A03 as a reviewable synthetic
-cloud foundation. Keep automatic production migration, schedules and live transports off
+Next: implement A02/A03 as a reviewable synthetic cloud foundation using the verified
+accounts and existing starter shell. Keep automatic production migration, schedules and live transports off
 until their explicit activation steps. Do not purchase plans or apply all milestones merely
 because the platforms have been chosen.
 

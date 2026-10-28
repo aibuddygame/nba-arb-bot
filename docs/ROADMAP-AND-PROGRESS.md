@@ -15,7 +15,7 @@ A published plan is not an implemented or deployed engine.
 | P03 | Synthetic Polymarket adapter and explicit moneyline mapping | 36 P03 + 64 retained tests passed; [scope/evidence](P03-SYNTHETIC-POLYMARKET.md) | Implemented and verified offline; live API contract/transport remain pending |
 | P04 | Synthetic persistent collector and paired moneyline snapshots | 44 P04 + 100 retained tests passed; [scope/evidence](P04-SYNTHETIC-PAIRED-COLLECTOR.md) | Implemented and verified offline; live transports/service remain disabled |
 | P05 | Synthetic daily report, CSV and results | 39 P05 + 144 retained tests passed; [scope/evidence](P05-SYNTHETIC-REPORTS-RESULTS.md) | Implemented and verified offline; live results/report service remain disabled |
-| P05A | Cloudflare/Supabase synthetic foundation | [Selected plan and acceptance units](P05A-CLOUD-FOUNDATION-PLAN.md) | A01 setup verified; A02–A04 implementation/pilot not started |
+| P05A | Cloudflare/Supabase synthetic foundation | [Selected plan and acceptance units](P05A-CLOUD-FOUNDATION-PLAN.md) | A01 setup and free Worker shell verified; A02–A04 recorder implementation/pilot not started |
 | P06 | Exact-line spreads and totals | Signed line/period/rule matching, push handling, unpaired-line reporting | Proposed follow-on |
 | P07 | Bounded live pilot | Selected provider/access/budget/host; credential remediation; measured timing and data-quality report; private backup/restore proof | Not started; requires live activation decision |
 | P08 | Forward research | Versioned methods, chronological game splits, coverage bias, game-clustered uncertainty, cost-aware paper evaluation | Not started |
@@ -159,3 +159,18 @@ runtime are planned; A04 unattended synthetic scheduling requires its own activa
 No NBA schema, Worker, schedule, live source, paid plan or historical-data migration was
 installed. This documentation-only repository change does not add new runtime tests; the
 P05 checkpoint's 183 passing offline tests remains historical evidence. See the P05A plan.
+
+## Cloudflare application-shell evidence update — 2026-10-28
+
+After creating the account and verifying email, the owner explicitly requested application
+creation. A Workers Free application named nba-arb-bot was deployed from the vendor Hello
+World template. The public workers.dev URL returned Hello World! in a separate browser tab;
+the dashboard reported Ready. Settings showed zero runtime variables/secrets, zero bindings,
+no Cron triggers or queue consumers and no Git build connection. The current-plan screen
+confirmed Free. No upgrade, custom-domain route or database write occurred. Account-specific
+receipt and screenshot are private ignored artifacts. No separate Pages project was needed
+for this NBA shell; the later SAMPAN and Genie-life sites remain uncreated.
+
+This completes application-shell setup, not the A02 PostgreSQL foundation, A03 recorder
+runtime, A04 scheduled synthetic pilot or P07 live collection. Earlier setup notes record the
+state at their preparation and are superseded by this update for account/application status.

@@ -23,8 +23,9 @@ The owner authorized P01 and then P02/P03/P04/P05 with synthetic data only on 20
 The owner subsequently selected Cloudflare hosting/compute and Supabase PostgreSQL,
 reusing the existing project renamed nba-arb-bot. Its old unrelated deployment integration
 was disconnected; data was preserved. [P05A](docs/P05A-CLOUD-FOUNDATION-PLAN.md) records
-verified setup and the planned synthetic cloud foundation. No NBA cloud schema, Worker,
-schedule or live transport is installed. Live activation remains outside the current scope.
+verified setup and the planned synthetic cloud foundation. The owner subsequently
+authorized a free-plan Cloudflare Worker application shell, now serving Hello World only.
+No NBA cloud schema, collector implementation, schedule or live transport is installed. Live activation remains outside the current scope.
 
 ## Legacy prototype status
 

@@ -28,9 +28,11 @@ P04 adds persistent paired scheduling, leases and retries for concrete local syn
 P05 adds daily reports/CSV and independently versioned synthetic scores and market payouts.
 Reports require an as-of cutoff; planned coverage and receipt-day activity differ. A score
 does not resolve a market. P05A synthetic cloud foundation is the next proposed implementation; P06 spreads/totals
-remains separate. Project repurposing is verified; no NBA cloud schema, Worker or schedule
-has been installed. Preserve legacy objects and keep account-specific setup receipts private.
-Read their scope and limits. No real provider/API transport, deployed service or live capture
+remains separate. Project repurposing is verified; no NBA cloud schema, collector implementation or schedule
+has been installed for collection. A free-plan Worker shell now serves only Hello World;
+it has no credentials, bindings or schedules. Preserve legacy objects and keep account-specific
+setup receipts private.
+Read their scope and limits. No real provider/API transport, deployed collector service or live capture
 is implemented. Synthetic policies/quotas are not approved production thresholds or billing.
 Do not initiate bets, trades, paid plans, notifications or background collection.
 

@@ -12,7 +12,8 @@ Project upload pack into the repository or docs/; that would introduce duplicate
 The following upload steps are only for an optional separate ChatGPT Project.
 P01–P05 are implemented offline; the refreshed handoff contains their evidence notes.
 Both source adapters are synthetic-only and have no live transports. P05A records the
-selected cloud platforms and verified project repurposing; its cloud implementation is pending.
+selected platforms, verified project repurposing and a free-plan Hello World Worker shell.
+The PostgreSQL/collector implementation and unattended synthetic pilot are pending.
 
 ## Install the matching reference pack
 
@@ -41,7 +42,8 @@ decisions, and the next unimplemented milestone. Explain what P01 implements off
 and the P02/P03 archives, P04 persistent synthetic paired scheduling and P05 as-of
 reports/CSV plus independent score and market-resolution versions. Distinguish selected
 Cloudflare/Supabase platforms and completed P05A project repurposing from the unimplemented
-cloud recorder schema, Worker runtime and unattended synthetic pilot.
+cloud recorder schema, collector runtime and unattended synthetic pilot. A deployed
+Hello World shell does not satisfy those milestones.
 Confirm that live transports, deployment and live capture have not started. Identify missing or conflicting files. If you cannot inspect a file or
 calculate its hash, say so; do not claim hash verification.”
 

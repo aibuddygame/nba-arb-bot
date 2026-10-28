@@ -1,5 +1,7 @@
 # P02 synthetic bookmaker adapter — implementation and evidence
 
+Historical P02 checkpoint; subsequent work is in [P03 notes](P03-SYNTHETIC-POLYMARKET.md).
+
 Date: 2026-10-28. Scope: local synthetic full-game moneyline parsing and archival.
 Status: implemented and tested offline. No live bookmaker/provider integration exists.
 Depends on P01 (commit 8106c09; draft PR #1 until merged).

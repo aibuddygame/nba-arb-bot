@@ -4,8 +4,10 @@ Status: target schema/semantics; P01 foundation implemented offline on 2026-10-2
 P01 implements teams, games, mappings, revisions, slots and audit events.
 P02 adds an explicitly installed synthetic bookmaker extension for raw/capture/market/quote
 records; gzip raw bytes are stored inside SQLite for atomic persistence. This is not the
-complete target schema below. Attempts/leases, Polymarket, pairing, results and analysis
-remain later work. See [P02 contract and boundary](P02-SYNTHETIC-BOOKMAKER.md).
+complete target schema below. P03 adds an explicit synthetic Polymarket extension for
+pinned market/outcome bindings, captures, quotes, fee/rule metadata and ordered depth levels.
+Attempts/leases, pairing, results and analysis remain later work.
+See [P02 scope](P02-SYNTHETIC-BOOKMAKER.md) and [P03 scope](P03-SYNTHETIC-POLYMARKET.md).
 See [P01 implementation boundary](P01-OFFLINE-PLANNER.md).
 Companion: [proposal](RECORDING-ENGINE-PROPOSAL.md).
 

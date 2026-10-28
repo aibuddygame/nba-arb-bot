@@ -1,8 +1,8 @@
 # NBA Arbitrage Bot / NBA odds research recorder
 
 This repository contains the original Python snapshot/report prototype and a proposed
-2026–27 paired odds recording engine. **P01 and the P02 synthetic bookmaker adapter are implemented
-and tested offline; live provider transport and collection are not implemented.**
+2026–27 paired odds recording engine. **P01 and the P02/P03 synthetic bookmaker/Polymarket adapters are
+implemented and tested offline; live transports and collection are not implemented.**
 The goal is a research history of bookmaker and Polymarket quotes every 30 minutes starting
 12 hours before every NBA game. Twenty-five slots including scheduled tip-off is proposed;
 actual source coverage, provider, budget and live deployment remain unresolved.
@@ -18,7 +18,7 @@ actual source coverage, provider, budget and live deployment remain unresolved.
 - [Matching-file upload and refresh guide](docs/CHATGPT-PROJECT-SETUP.md)
 
 GitHub is canonical. ChatGPT Project files are explicit commit/hash snapshots.
-The owner authorized P01 and then P02 with synthetic data only on 2026-10-28.
+The owner authorized P01 and then P02/P03 with synthetic data only on 2026-10-28.
 Live activation remains outside the current scope.
 
 ## Legacy prototype status
@@ -60,7 +60,22 @@ PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m nba_arb_bot.recorder.bookmak
 ```
 
 This replays local synthetic bytes into a temporary database. No provider is selected;
-there is no live transport. The full suite now contains 64 passing offline tests.
+there is no live transport. The P02 checkpoint had 64 passing offline tests; all remain passing after P03.
+
+## P03 synthetic Polymarket adapter
+
+- [Explicit mappings, book depth, fee/rule metadata and evidence](docs/P03-SYNTHETIC-POLYMARKET.md)
+- Synthetic fixture: tests/fixtures/polymarket-synthetic.json
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m nba_arb_bot.recorder.polymarket_demo \
+  --fixture tests/fixtures/polymarket-synthetic.json \
+  --received-at 2026-10-28T12:00:00Z \
+  --max-quote-age-seconds 120
+```
+
+This replays a synthetic full snapshot against an explicitly pinned fictional mapping.
+The full suite contains 100 passing offline tests. No live Polymarket transport exists.
 
 ## Legacy setup reference
 

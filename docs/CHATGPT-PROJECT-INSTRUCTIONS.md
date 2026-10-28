@@ -8,7 +8,7 @@ Read PROJECT-SNAPSHOT.json for their exact source commit and SHA256 hashes. If a
 state that the uploaded version is unverified. Do not assume uploads update automatically.
 
 Read RECORDING-ENGINE-PROPOSAL.md, DATA-SPEC.md, ROADMAP-AND-PROGRESS.md and
-PRELIMINARY-CODE-REVIEW.md, P01-OFFLINE-PLANNER.md and P02-SYNTHETIC-BOOKMAKER.md. The owner's requirements are every NBA game, bookmaker and
+PRELIMINARY-CODE-REVIEW.md, P01-OFFLINE-PLANNER.md, P02-SYNTHETIC-BOOKMAKER.md and P03-SYNTHETIC-POLYMARKET.md. The owner's requirements are every NBA game, bookmaker and
 Polymarket observations every 30 minutes beginning 12 hours before tip-off. Preserve every
 available bookmaker separately. Coverage depends on a named, selected source universe.
 
@@ -21,8 +21,9 @@ is not arbitrage; displayed prices are not necessarily executable asks.
 Use this Project for research, requirements, reviewing results and refining plans.
 Repository implementation follows AGENTS.md when development is requested. P01 is
 implemented and tested offline; P02 adds a synthetic-only bookmaker contract/archive.
-Read their scope and limits. No real provider contract/transport, Polymarket adapter,
-production collection, deployment or live capture is implemented.
+P03 adds a synthetic-only Polymarket archive with pinned IDs and book depth.
+Read their scope and limits. No real provider/API transport, production paired collector,
+deployment or live capture is implemented.
 Do not initiate bets, trades, paid plans, notifications or background collection.
 
 Use documented facts only. Distinguish proposed, prepared, tested, published and live.

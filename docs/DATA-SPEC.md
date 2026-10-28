@@ -6,7 +6,9 @@ P02 adds an explicitly installed synthetic bookmaker extension for raw/capture/m
 records; gzip raw bytes are stored inside SQLite for atomic persistence. This is not the
 complete target schema below. P03 adds an explicit synthetic Polymarket extension for
 pinned market/outcome bindings, captures, quotes, fee/rule metadata and ordered depth levels.
-Attempts/leases, pairing, results and analysis remain later work.
+P04 adds an explicit synthetic queue, lease/attempt/result and quota ledgers, immutable
+policies and versioned per-slot/book/team pairings. Results, reporting and analysis remain
+later work. See [P04 boundaries](P04-SYNTHETIC-PAIRED-COLLECTOR.md).
 See [P02 scope](P02-SYNTHETIC-BOOKMAKER.md) and [P03 scope](P03-SYNTHETIC-POLYMARKET.md).
 See [P01 implementation boundary](P01-OFFLINE-PLANNER.md).
 Companion: [proposal](RECORDING-ENGINE-PROPOSAL.md).

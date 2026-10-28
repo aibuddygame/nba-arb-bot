@@ -13,7 +13,7 @@ A published plan is not an implemented or deployed engine.
 | P01 | Offline schema foundation, canonical IDs and slot planner | 29 offline tests passed; 25-slot synthetic demo; [evidence and limits](P01-OFFLINE-PLANNER.md) | Implemented and verified offline; publication/merge tracked separately |
 | P02 | Synthetic bookmaker adapter | 35 P02 tests + 29 P01 tests passed; [scope/evidence](P02-SYNTHETIC-BOOKMAKER.md) | Implemented and verified offline; real provider integration remains unresolved |
 | P03 | Synthetic Polymarket adapter and explicit moneyline mapping | 36 P03 + 64 retained tests passed; [scope/evidence](P03-SYNTHETIC-POLYMARKET.md) | Implemented and verified offline; live API contract/transport remain pending |
-| P04 | Persistent collector and paired moneyline snapshots | Retry/crash recovery, real timing, freshness flags, no fabricated backfills, quota accounting | Not started |
+| P04 | Synthetic persistent collector and paired moneyline snapshots | 44 P04 + 100 retained tests passed; [scope/evidence](P04-SYNTHETIC-PAIRED-COLLECTOR.md) | Implemented and verified offline; live transports/service remain disabled |
 | P05 | Daily report, CSV and results | Traceable differences, expected/completed/missing counts, source coverage, results/resolutions/corrections | Not started |
 | P06 | Exact-line spreads and totals | Signed line/period/rule matching, push handling, unpaired-line reporting | Proposed follow-on |
 | P07 | Bounded live pilot | Selected provider/access/budget/host; credential remediation; measured timing and data-quality report; private backup/restore proof | Not started; requires live activation decision |
@@ -23,7 +23,8 @@ The owner authorized P01 development on 2026-10-28 after the Work project source
 change. The app now reports /Users/barrylau/Documents/GitHub/nba-arb-bot. P01 is implemented
 and verified offline. The owner subsequently authorized P02 with synthetic data only; it is
 implemented and tested offline. P03 was subsequently authorized with synthetic data only
-and is verified offline. Provider/hosting decisions remain open; live collection is disabled.
+and is verified offline. P04 was then authorized with synthetic sources only and is verified
+offline. Provider/hosting decisions remain open; live collection is disabled.
 
 ## Decision register
 
@@ -108,3 +109,17 @@ levels are immutable and insert-failure rollback/retry was tested. P02 now share
 capture guards from synthetic.py without changing its interface. P01/P02 PRs remain stack
 dependencies until merged. P04–P08 remain unimplemented; live collection is disabled.
 See [P03 notes](P03-SYNTHETIC-POLYMARKET.md). Known legacy credential revocation is unverified.
+
+## P04 evidence update — 2026-10-28
+
+Persistent source jobs, immutable policies/attempt results, fenced leases, bounded retries,
+synthetic call reservations and versioned per-slot/book/team pairing are implemented. All
+144 tests passed on Python 3.14 (44 P04 + 100 retained); P04 tests block socket creation.
+Restart demo: 25 slots/50 jobs, 8 pair rows/2 eligible, expected partial slot, one reserved
+unit per source. Persistent replay makes no new calls. Slot completion is atomic with the
+last source archive/result and pairs; injected failure/retry and stale-worker fencing passed.
+P01 retains zero-grace defaults; P04 fixture refresh opts into explicit policy grace. T0 is
+fail-closed. Thresholds and source budgets are synthetic examples, not live decisions.
+See [P04 notes](P04-SYNTHETIC-PAIRED-COLLECTOR.md). P05–P08 are unimplemented. No live
+transport, actual provider billing/quota, background service or production database migration
+was exercised. Earlier PRs remain dependencies until merged; no merges are claimed here.

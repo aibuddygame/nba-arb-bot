@@ -1,8 +1,8 @@
 # NBA Arbitrage Bot / NBA odds research recorder
 
 This repository contains the original Python snapshot/report prototype and a proposed
-2026–27 paired odds recording engine. **P01 and the P02/P03 synthetic bookmaker/Polymarket adapters are
-implemented and tested offline; live transports and collection are not implemented.**
+2026–27 paired odds recording engine. **P01–P04 are implemented and tested offline, including persistent paired
+scheduling for synthetic bookmaker/Polymarket sources. Live collection is disabled.**
 The goal is a research history of bookmaker and Polymarket quotes every 30 minutes starting
 12 hours before every NBA game. Twenty-five slots including scheduled tip-off is proposed;
 actual source coverage, provider, budget and live deployment remain unresolved.
@@ -18,7 +18,7 @@ actual source coverage, provider, budget and live deployment remain unresolved.
 - [Matching-file upload and refresh guide](docs/CHATGPT-PROJECT-SETUP.md)
 
 GitHub is canonical. ChatGPT Project files are explicit commit/hash snapshots.
-The owner authorized P01 and then P02/P03 with synthetic data only on 2026-10-28.
+The owner authorized P01 and then P02/P03/P04 with synthetic data only on 2026-10-28.
 Live activation remains outside the current scope.
 
 ## Legacy prototype status
@@ -75,7 +75,22 @@ PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m nba_arb_bot.recorder.polymar
 ```
 
 This replays a synthetic full snapshot against an explicitly pinned fictional mapping.
-The full suite contains 100 passing offline tests. No live Polymarket transport exists.
+The P03 checkpoint had 100 passing offline tests. No live Polymarket transport exists.
+
+## P04 persistent paired scheduling (synthetic only)
+
+- [Queue, policies, leases, retries, pairing and evidence](docs/P04-SYNTHETIC-PAIRED-COLLECTOR.md)
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m nba_arb_bot.recorder.collector_demo \
+  --bookmaker-fixture tests/fixtures/bookmaker-synthetic.json \
+  --polymarket-fixture tests/fixtures/polymarket-synthetic.json
+```
+
+The demo resumes after reopening its database. Its intentionally incomplete fixture yields
+8 pair records, 2 eligible pairs and a partial slot. Add --database data-private/p04-synthetic.sqlite
+for an idempotent persistent replay. The full offline suite contains 144 passing tests.
+No background daemon or live transport is enabled.
 
 ## Legacy setup reference
 

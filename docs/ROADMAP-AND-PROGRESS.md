@@ -15,6 +15,7 @@ A published plan is not an implemented or deployed engine.
 | P03 | Synthetic Polymarket adapter and explicit moneyline mapping | 36 P03 + 64 retained tests passed; [scope/evidence](P03-SYNTHETIC-POLYMARKET.md) | Implemented and verified offline; live API contract/transport remain pending |
 | P04 | Synthetic persistent collector and paired moneyline snapshots | 44 P04 + 100 retained tests passed; [scope/evidence](P04-SYNTHETIC-PAIRED-COLLECTOR.md) | Implemented and verified offline; live transports/service remain disabled |
 | P05 | Synthetic daily report, CSV and results | 39 P05 + 144 retained tests passed; [scope/evidence](P05-SYNTHETIC-REPORTS-RESULTS.md) | Implemented and verified offline; live results/report service remain disabled |
+| P05A | Cloudflare/Supabase synthetic foundation | [Selected plan and acceptance units](P05A-CLOUD-FOUNDATION-PLAN.md) | A01 setup verified; A02–A04 implementation/pilot not started |
 | P06 | Exact-line spreads and totals | Signed line/period/rule matching, push handling, unpaired-line reporting | Proposed follow-on |
 | P07 | Bounded live pilot | Selected provider/access/budget/host; credential remediation; measured timing and data-quality report; private backup/restore proof | Not started; requires live activation decision |
 | P08 | Forward research | Versioned methods, chronological game splits, coverage bias, game-clustered uncertainty, cost-aware paper evaluation | Not started |
@@ -25,7 +26,9 @@ and verified offline. The owner subsequently authorized P02 with synthetic data 
 implemented and tested offline. P03 was subsequently authorized with synthetic data only
 and is verified offline. P04 was then authorized with synthetic sources only and is verified
 offline. P05 reports, CSV and independently versioned synthetic scores/resolutions were then
-authorized and verified offline. Provider/hosting decisions remain open; live collection is disabled.
+authorized and verified offline. Cloudflare and Supabase were then selected, with the existing Turing project reused for NBA.
+Project rename/disconnection is verified; cloud implementation and live collection remain disabled/unimplemented.
+Provider, runtime compatibility, budget and policy decisions remain open.
 
 ## Decision register
 
@@ -35,9 +38,9 @@ authorized and verified offline. Provider/hosting decisions remain open; live co
 | D02 | Preserve each bookmaker's odds and matching Polymarket data | Owner requested |
 | D03 | Include T0; 25 slots, with game-state qualification | Proposed |
 | D04 | Moneyline first; spreads/totals through exact-line matching | Proposed staging, not a waiver of broader requested coverage |
-| D05 | Python + SQLite + compressed private raw evidence | Proposed |
+| D05 | Python/SQLite offline reference; Supabase PostgreSQL for cloud persistence | Offline implementation retained; cloud platform selected, port not implemented |
 | D06 | Bookmaker provider, named book universe, storage rights and API budget | Unresolved |
-| D07 | Runtime host, operating window, backups and retention | Unresolved |
+| D07 | Cloudflare hosting/compute and Supabase database; reuse existing Turing project | Owner selected; renamed nba-arb-bot, unrelated integration removed. Runtime/pilot, operating window, backup/retention details remain open |
 | D08 | Freshness/lateness/pairing tolerances and consensus minimum book count | Unresolved; select and version before live pilot |
 | D09 | Main lines first; alternate/prop/period/live coverage | Proposed limits; confirm first live release scope |
 | D10 | GitHub canonical; Project copies versioned by commit/hash | Planning workflow selected |
@@ -140,3 +143,19 @@ formula escaping, hashes and overwrite refusal passed. No live transport, schedu
 service, notification, production migration or new credential use occurred. Draft PR #4 remains
 an unmerged dependency at preparation; P06–P08 remain unimplemented. See [P05 notes](P05-SYNTHETIC-REPORTS-RESULTS.md).
 Earlier evidence updates are historical checkpoints; their then-future statuses are not current.
+
+## Cloud platform/setup evidence update — 2026-10-28
+
+The owner selected Cloudflare and Supabase and explicitly chose to repurpose the existing
+Turing project for NBA. Supabase reported the renamed nba-arb-bot project healthy on Free.
+Its old unrelated Genie GitHub production-deployment integration was disconnected and no
+replacement automatic deployment was enabled. The existing application table and private
+storage were preserved. Exact account references and setup receipts are private ignored
+artifacts, not public documentation. Cloudflare account creation is owner-managed and its
+account access/deployment configuration remains unverified at preparation.
+
+P05A A01 setup is verified. A02 PostgreSQL transaction/access/schema work and A03 Worker
+runtime are planned; A04 unattended synthetic scheduling requires its own activation.
+No NBA schema, Worker, schedule, live source, paid plan or historical-data migration was
+installed. This documentation-only repository change does not add new runtime tests; the
+P05 checkpoint's 183 passing offline tests remains historical evidence. See the P05A plan.

@@ -11,7 +11,8 @@ No ZIP upload or second copy is needed for this local workflow. Do not extract a
 Project upload pack into the repository or docs/; that would introduce duplicate files.
 The following upload steps are only for an optional separate ChatGPT Project.
 P01–P05 are implemented offline; the refreshed handoff contains their evidence notes.
-Both source adapters are synthetic-only and have no live transports.
+Both source adapters are synthetic-only and have no live transports. P05A records the
+selected cloud platforms and verified project repurposing; its cloud implementation is pending.
 
 ## Install the matching reference pack
 
@@ -21,7 +22,7 @@ Both source adapters are synthetic-only and have no live transports.
    README.md, AGENTS.md, RECORDING-ENGINE-PROPOSAL.md, DATA-SPEC.md,
    ROADMAP-AND-PROGRESS.md, PRELIMINARY-CODE-REVIEW.md,
    P01-OFFLINE-PLANNER.md, P02-SYNTHETIC-BOOKMAKER.md, P03-SYNTHETIC-POLYMARKET.md,
-   P04-SYNTHETIC-PAIRED-COLLECTOR.md, P05-SYNTHETIC-REPORTS-RESULTS.md, CHATGPT-PROJECT-INSTRUCTIONS.md,
+   P04-SYNTHETIC-PAIRED-COLLECTOR.md, P05-SYNTHETIC-REPORTS-RESULTS.md, P05A-CLOUD-FOUNDATION-PLAN.md, CHATGPT-PROJECT-INSTRUCTIONS.md,
    CHATGPT-PROJECT-SETUP.md and PROJECT-SNAPSHOT.json.
    The ZIP is a transport package; upload the extracted files, not just the ZIP.
 4. Paste the body under the title in CHATGPT-PROJECT-INSTRUCTIONS.md into the Project's
@@ -38,7 +39,9 @@ or private databases. The pack intentionally contains planning/reference files o
 commit, the owner's confirmed recording requirements, proposed choices, unresolved
 decisions, and the next unimplemented milestone. Explain what P01 implements offline
 and the P02/P03 archives, P04 persistent synthetic paired scheduling and P05 as-of
-reports/CSV plus independent score and market-resolution versions.
+reports/CSV plus independent score and market-resolution versions. Distinguish selected
+Cloudflare/Supabase platforms and completed P05A project repurposing from the unimplemented
+cloud recorder schema, Worker runtime and unattended synthetic pilot.
 Confirm that live transports, deployment and live capture have not started. Identify missing or conflicting files. If you cannot inspect a file or
 calculate its hash, say so; do not claim hash verification.”
 
@@ -62,7 +65,8 @@ handoff locally; only approved documentation belongs in public GitHub.
 “Review the P01–P05 implementations and their evidence notes at the manifest commit for
 aibuddygame/nba-arb-bot. Distinguish the offline planner and synthetic bookmaker archive
 and synthetic Polymarket snapshots from real provider/API integration and a production
-collector. Include P04 queue/retry/pairing and P05 reporting/results evidence and identify the next P06 acceptance unit and unresolved provider decisions. Do not start another milestone
+collector. Include P04 queue/retry/pairing and P05 reporting/results evidence and identify the next P05A synthetic cloud acceptance unit and unresolved provider decisions.
+P06 spreads/totals remains a separate feature milestone. Do not start another milestone
 or activate collection, subscriptions, email or trading.”
 
 ## Product guidance reference

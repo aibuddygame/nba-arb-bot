@@ -127,3 +127,13 @@ Scores/resolutions use independent append-only version chains and raw hashes. Re
 are known at report cutoff, not necessarily at the historical quote time. Exact contracts,
 CSV columns, export escaping and reproduction are in the P05 notes. Export schema version 1
 includes seven CSV tables, Markdown/JSON and a completion/hash manifest, without raw bodies.
+
+## Selected cloud persistence — P05A
+
+The owner selected Supabase PostgreSQL for cloud persistence and Cloudflare for hosting/
+compute. The existing Supabase project has been repurposed, but no NBA schema has been
+installed. SQLite remains the P01–P05 offline reference, not an automatically migrated cloud
+database. The [P05A plan](P05A-CLOUD-FOUNDATION-PLAN.md) requires transaction/fencing parity,
+least-privilege access and explicit migration evidence. Supabase private Storage is proposed
+for raw/report objects; SQL/object-store atomicity, recovery and backup must be designed and
+verified. Existing legacy application/storage objects are preserved.

@@ -2,7 +2,9 @@
 
 Planning date: 2026-10-28 (Asia/Singapore). Target season: 2026–27.
 Status: P01–P05 verified offline, including synthetic paired scheduling, reports, CSV and results.
-Live provider transport and live collection are disabled/unimplemented.
+Cloudflare hosting/compute and Supabase persistence are now owner-selected. Existing project
+repurposing is verified; the cloud port and live collection remain unimplemented/disabled.
+See [P05A foundation plan](P05A-CLOUD-FOUNDATION-PLAN.md).
 See [P01 scope](P01-OFFLINE-PLANNER.md) and [P02 scope](P02-SYNTHETIC-BOOKMAKER.md), plus [P03 scope](P03-SYNTHETIC-POLYMARKET.md) and [P04 scope](P04-SYNTHETIC-PAIRED-COLLECTOR.md) and [P05 scope](P05-SYNTHETIC-REPORTS-RESULTS.md).
 
 ## Purpose
@@ -21,7 +23,7 @@ opportunities after execution costs. This is a research recorder, not a trading 
 | Publish planning to GitHub and provide matching ChatGPT Project files first | Owner authorized |
 | Include scheduled tip-off, giving 25 planned slots | Proposed boundary convention |
 | Cover all feed-supported books; moneyline first, exact-line spreads/totals next | Proposed staged delivery; provider and first live release scope unresolved |
-| Python, SQLite and compressed private raw responses | Proposed starting architecture |
+| Python/SQLite offline reference; Cloudflare compute and Supabase PostgreSQL for cloud | Cloud platforms owner-selected; cloud port and raw-object design pending |
 | REST snapshots for the half-hour cadence; streaming optional later | Proposed approach, subject to adapter capability |
 | Daily report in Singapore time, research storage in UTC | Proposed reporting convention |
 
@@ -94,8 +96,9 @@ cost-aware paper outcomes. Historical midpoints cannot prove fillability or dept
 
 ## Live-readiness decisions
 
-Choose source/provider, named books, permissible storage/export use, API quota and budget,
-runtime host, backup/retention policy, freshness thresholds, pairing tolerance and final live
+Cloudflare and Supabase are selected platforms. Choose source/provider, named books,
+permissible storage/export use, API quota and budget, deployed runtime details, backup/retention
+policy, freshness thresholds, pairing tolerance and final live
 market scope before activation. Offline schema/planner work need not wait for paid access.
 Do not infer authorization to buy services or deploy from this documentation task.
 

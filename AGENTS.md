@@ -13,8 +13,12 @@ P01–P05 are implemented and verified offline. The owner authorized P02/P03/P04
 using synthetic data only; see docs/P01-OFFLINE-PLANNER.md,
 docs/P02-SYNTHETIC-BOOKMAKER.md, docs/P03-SYNTHETIC-POLYMARKET.md,
 docs/P04-SYNTHETIC-PAIRED-COLLECTOR.md and docs/P05-SYNTHETIC-REPORTS-RESULTS.md.
-Paid subscriptions,
-deployment, background collection, notifications, betting and trading remain outside scope.
+The owner subsequently selected Cloudflare and Supabase and authorized reusing the
+existing Turing project for NBA. The project was renamed and its unrelated Genie deployment
+integration disconnected. See docs/P05A-CLOUD-FOUNDATION-PLAN.md. Cloud runtime/schema
+implementation and unattended collection are not yet complete.
+Paid subscriptions, deployment/schedule activation, notifications, betting and trading
+remain outside this setup task.
 Work on the next development milestone when requested. Record proposals separately from
 confirmed owner requirements.
 

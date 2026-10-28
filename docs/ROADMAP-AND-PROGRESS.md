@@ -9,8 +9,8 @@ A published plan is not an implemented or deployed engine.
 
 | ID | Deliverable | Acceptance evidence | Current state |
 | --- | --- | --- | --- |
-| P00 | Planning baseline and Project handoff | GitHub files fetched back and compared; local matching pack with commit/hash manifest | Prepared; publication proof belongs to external delivery manifest |
-| P01 | Offline schema, canonical IDs and slot planner | 25 slots per revision; UTC/DST, restart, duplicate, late discovery, postponed/cancelled and early-start cases | Not started |
+| P00 | Planning baseline and Project handoff | GitHub files fetched back and compared; local matching pack with commit/hash manifest | Verified: baseline de4c156 and matching local pack; Work source-folder path verified 2026-10-28 |
+| P01 | Offline schema foundation, canonical IDs and slot planner | 29 offline tests passed; 25-slot synthetic demo; [evidence and limits](P01-OFFLINE-PLANNER.md) | Implemented and verified offline; publication/merge tracked separately |
 | P02 | Bookmaker adapter | Synthetic response tests; per-book two-sided odds, update times, missing/suspended states, raw provenance | Not started; provider unresolved |
 | P03 | Polymarket adapter and moneyline mapping | Explicit event/outcome IDs, bids/asks/depth, source timestamps, fees/rules, ambiguous mapping rejection | Not started |
 | P04 | Persistent collector and paired moneyline snapshots | Retry/crash recovery, real timing, freshness flags, no fabricated backfills, quota accounting | Not started |
@@ -19,8 +19,9 @@ A published plan is not an implemented or deployed engine.
 | P07 | Bounded live pilot | Selected provider/access/budget/host; credential remediation; measured timing and data-quality report; private backup/restore proof | Not started; requires live activation decision |
 | P08 | Forward research | Versioned methods, chronological game splits, coverage bias, game-clustered uncertainty, cost-aware paper evaluation | Not started |
 
-No development was authorized by the planning/publication request. When development is
-requested, begin with P01. Provider/hosting decisions can remain open during offline work.
+The owner authorized P01 development on 2026-10-28 after the Work project source-folder
+change. The app now reports /Users/barrylau/Documents/GitHub/nba-arb-bot. P01 is implemented
+and verified offline. Provider/hosting decisions remain open; no live collection is authorized.
 
 ## Decision register
 
@@ -65,3 +66,15 @@ The delivery manifest records the actual published commit and verification outco
 Project upload, Project instruction installation, engine implementation and live capture
 remain unverified/not started. Update this log after subsequent evidence, not expectations.
 
+
+## P01 evidence update — 2026-10-28
+
+Work Project source-folder path and clean GitHub checkout verified before development.
+P01 adds a standard-library SQLite foundation, explicit identities for 30 teams, exact fixture
+matching, source-event bindings, revision history, immutable audits and 25-slot UTC planning.
+29 synthetic unittest cases passed under Python 3.14, including injected transaction failure
+and retry recovery. Demo returned 25 slots. No legacy entrypoint, network feed, notification,
+paid plan or live capture ran. The full quote/attempt/analysis schema remains later work.
+See [P01 implementation notes](P01-OFFLINE-PLANNER.md). P02–P08 are not implemented.
+The baseline Project upload pack remains a historical snapshot; the P01 handoff records its
+own commit/hash provenance. Public credential revocation remains unverified.

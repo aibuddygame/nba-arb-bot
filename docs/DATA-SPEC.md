@@ -1,6 +1,9 @@
 # Paired odds research data specification v0.1
 
-Status: proposed schema and semantics, not implemented. Date: 2026-10-28.
+Status: target schema/semantics; P01 foundation implemented offline on 2026-10-28.
+Only teams, games, mappings, revisions, slots and audit events currently exist.
+Quote, attempt/lease, pairing, result and analysis tables remain later work.
+See [P01 implementation boundary](P01-OFFLINE-PLANNER.md).
 Companion: [proposal](RECORDING-ENGINE-PROPOSAL.md).
 
 ## Conventions and identities

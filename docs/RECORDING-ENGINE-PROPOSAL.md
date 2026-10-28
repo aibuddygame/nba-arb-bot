@@ -1,7 +1,8 @@
 # NBA paired odds recording engine — proposal v0.1
 
 Planning date: 2026-10-28 (Asia/Singapore). Target season: 2026–27.
-Status: documentation baseline; implementation and live collection not started.
+Status: P01 foundation implemented and verified offline; source collectors and live
+collection not started. See [P01 scope and evidence](P01-OFFLINE-PLANNER.md).
 
 ## Purpose
 

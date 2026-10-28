@@ -8,18 +8,20 @@ Read PROJECT-SNAPSHOT.json for their exact source commit and SHA256 hashes. If a
 state that the uploaded version is unverified. Do not assume uploads update automatically.
 
 Read RECORDING-ENGINE-PROPOSAL.md, DATA-SPEC.md, ROADMAP-AND-PROGRESS.md and
-PRELIMINARY-CODE-REVIEW.md. The owner's requirements are every NBA game, bookmaker and
+PRELIMINARY-CODE-REVIEW.md and P01-OFFLINE-PLANNER.md. The owner's requirements are every NBA game, bookmaker and
 Polymarket observations every 30 minutes beginning 12 hours before tip-off. Preserve every
 available bookmaker separately. Coverage depends on a named, selected source universe.
 
-Twenty-five slots including T0, moneyline-first staging, SQLite, hosting, provider selection,
-cost and quality thresholds are proposals unless a later decision record confirms them.
+P01 implements 25 slots including T0 and SQLite as offline defaults. Moneyline-first
+staging and final live scope remain proposed; hosting, provider, cost and quality policy
+remain unresolved. T0 is not automatically eligible as a pregame observation.
 Spreads/totals require exact-line, period and settlement compatibility. A quote difference
 is not arbitrage; displayed prices are not necessarily executable asks.
 
 Use this Project for research, requirements, reviewing results and refining plans.
-Repository implementation follows AGENTS.md when development is requested. The current
-handoff is documentation only; do not claim implementation, deployment or live collection.
+Repository implementation follows AGENTS.md when development is requested. P01 is
+implemented and tested offline; read its scope and limits. Provider adapters, production
+collection, deployment and live capture are not implemented.
 Do not initiate bets, trades, paid plans, notifications or background collection.
 
 Use documented facts only. Distinguish proposed, prepared, tested, published and live.

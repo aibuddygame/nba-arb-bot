@@ -11,7 +11,7 @@ A published plan is not an implemented or deployed engine.
 | --- | --- | --- | --- |
 | P00 | Planning baseline and Project handoff | GitHub files fetched back and compared; local matching pack with commit/hash manifest | Verified: baseline de4c156 and matching local pack; Work source-folder path verified 2026-10-28 |
 | P01 | Offline schema foundation, canonical IDs and slot planner | 29 offline tests passed; 25-slot synthetic demo; [evidence and limits](P01-OFFLINE-PLANNER.md) | Implemented and verified offline; publication/merge tracked separately |
-| P02 | Bookmaker adapter | Synthetic response tests; per-book two-sided odds, update times, missing/suspended states, raw provenance | Not started; provider unresolved |
+| P02 | Synthetic bookmaker adapter | 35 P02 tests + 29 P01 tests passed; [scope/evidence](P02-SYNTHETIC-BOOKMAKER.md) | Implemented and verified offline; real provider integration remains unresolved |
 | P03 | Polymarket adapter and moneyline mapping | Explicit event/outcome IDs, bids/asks/depth, source timestamps, fees/rules, ambiguous mapping rejection | Not started |
 | P04 | Persistent collector and paired moneyline snapshots | Retry/crash recovery, real timing, freshness flags, no fabricated backfills, quota accounting | Not started |
 | P05 | Daily report, CSV and results | Traceable differences, expected/completed/missing counts, source coverage, results/resolutions/corrections | Not started |
@@ -21,7 +21,8 @@ A published plan is not an implemented or deployed engine.
 
 The owner authorized P01 development on 2026-10-28 after the Work project source-folder
 change. The app now reports /Users/barrylau/Documents/GitHub/nba-arb-bot. P01 is implemented
-and verified offline. Provider/hosting decisions remain open; no live collection is authorized.
+and verified offline. The owner subsequently authorized P02 with synthetic data only; it is
+implemented and tested offline. Provider/hosting decisions remain open; live collection is disabled.
 
 ## Decision register
 
@@ -38,6 +39,7 @@ and verified offline. Provider/hosting decisions remain open; no live collection
 | D09 | Main lines first; alternate/prop/period/live coverage | Proposed limits; confirm first live release scope |
 | D10 | GitHub canonical; Project copies versioned by commit/hash | Planning workflow selected |
 | D11 | No betting/trading in recording scope | Baseline scope |
+| D12 | P02 synthetic raw evidence stored as gzip blobs inside SQLite for atomic persistence | Implemented offline; production raw-file/blob-store choice remains open |
 
 ## Known risks and prerequisites
 
@@ -78,3 +80,16 @@ paid plan or live capture ran. The full quote/attempt/analysis schema remains la
 See [P01 implementation notes](P01-OFFLINE-PLANNER.md). P02–P08 are not implemented.
 The baseline Project upload pack remains a historical snapshot; the P01 handoff records its
 own commit/hash provenance. Public credential revocation remains unverified.
+
+## P02 evidence update — 2026-10-28
+
+Synthetic-only bookmaker contract and archive implemented on top of P01. All 64 standard-
+library unittest cases passed (35 P02 + 29 P01) under Python 3.14. P02 tests block socket
+creation. Replay demo returned 8 book/market records and 16 outcome records, including missing
+placeholders, for two fictional fixtures. No recording slot is completed automatically.
+An explicit optional schema extension archives gzip raw bytes with SHA256 and preserves
+per-book source odds, request/receipt/source times, missing/suspended states and quality flags.
+Install/ingest rollback, restart and idempotency checks passed. No production database was
+migrated. P01 remains a dependency until its draft PR is merged. P03–P08 are unimplemented.
+A real bookmaker provider contract/transport, access, rights and budget remain unresolved.
+See [P02 notes](P02-SYNTHETIC-BOOKMAKER.md). Live collection/notifications remain disabled.

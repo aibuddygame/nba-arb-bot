@@ -1,8 +1,8 @@
 # NBA Arbitrage Bot / NBA odds research recorder
 
 This repository contains the original Python snapshot/report prototype and a proposed
-2026–27 paired odds recording engine. **P01 is implemented and tested offline; collectors
-and live operation are not implemented.**
+2026–27 paired odds recording engine. **P01 and the P02 synthetic bookmaker adapter are implemented
+and tested offline; live provider transport and collection are not implemented.**
 The goal is a research history of bookmaker and Polymarket quotes every 30 minutes starting
 12 hours before every NBA game. Twenty-five slots including scheduled tip-off is proposed;
 actual source coverage, provider, budget and live deployment remain unresolved.
@@ -18,8 +18,8 @@ actual source coverage, provider, budget and live deployment remain unresolved.
 - [Matching-file upload and refresh guide](docs/CHATGPT-PROJECT-SETUP.md)
 
 GitHub is canonical. ChatGPT Project files are explicit commit/hash snapshots.
-The owner authorized P01 development on 2026-10-28 after verifying the local Project
-source folder. Live activation remains outside the current scope.
+The owner authorized P01 and then P02 with synthetic data only on 2026-10-28.
+Live activation remains outside the current scope.
 
 ## Legacy prototype status
 
@@ -45,6 +45,22 @@ PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m nba_arb_bot.recorder --demo
 P01 uses the Python standard library and temporary synthetic databases. No legacy config,
 provider credentials or legacy dependencies are needed. The demo does not start collection.
 Private raw responses, databases and exports belong outside Git.
+
+## P02 synthetic bookmaker adapter
+
+- [Contract, schema installation, demo and evidence](docs/P02-SYNTHETIC-BOOKMAKER.md)
+- Synthetic fixture: tests/fixtures/bookmaker-synthetic.json
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m nba_arb_bot.recorder.bookmaker_demo \
+  --fixture tests/fixtures/bookmaker-synthetic.json \
+  --received-at 2026-10-28T12:00:00Z \
+  --expected-books synthetic-a synthetic-b synthetic-c synthetic-d \
+  --max-quote-age-seconds 120
+```
+
+This replays local synthetic bytes into a temporary database. No provider is selected;
+there is no live transport. The full suite now contains 64 passing offline tests.
 
 ## Legacy setup reference
 

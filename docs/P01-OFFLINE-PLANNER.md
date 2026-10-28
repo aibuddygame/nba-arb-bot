@@ -1,5 +1,8 @@
 # P01 offline foundation — implementation and verification
 
+Historical P01 delivery note; subsequent synthetic adapter work is documented in
+[P02 implementation notes](P02-SYNTHETIC-BOOKMAKER.md).
+
 Date: 2026-10-28. Runtime verified: Python 3.14; project minimum remains Python 3.11.
 Scope: canonical identities, persistent fixture/schedule/slot foundation, synthetic demo.
 No bookmaker or Polymarket adapters, network loop, notifications, live capture or trades.

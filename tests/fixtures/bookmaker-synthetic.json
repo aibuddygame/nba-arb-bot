@@ -1,0 +1,68 @@
+{
+  "schema": "synthetic-bookmaker-v1",
+  "synthetic": true,
+  "status": "ok",
+  "events": [
+    {
+      "event_id": "fictional-lal-bos",
+      "away": "Los Angeles Lakers",
+      "home": "Boston Celtics",
+      "starts_at": "2026-10-29T00:00:00Z",
+      "status": "scheduled",
+      "bookmakers": [
+        {
+          "book_id": "synthetic-a",
+          "status": "open",
+          "markets": [{
+            "type": "moneyline", "period": "full_game", "status": "open",
+            "rules_ref": "synthetic-including-overtime-v1",
+            "updated_at": "2026-10-28T11:59:30Z", "odds_format": "american",
+            "outcomes": [
+              {"team": "LAL", "price": "+130"},
+              {"team": "BOS", "price": "-150"}
+            ]
+          }]
+        },
+        {
+          "book_id": "synthetic-b",
+          "status": "suspended",
+          "markets": [{
+            "type": "moneyline", "period": "full_game", "status": "suspended",
+            "rules_ref": "synthetic-including-overtime-v1",
+            "updated_at": "2026-10-28T11:59:00Z", "odds_format": "decimal",
+            "outcomes": [
+              {"team": "BOS", "price": "1.6500"},
+              {"team": "LAL", "price": "2.3500"}
+            ]
+          }]
+        },
+        {
+          "book_id": "synthetic-c",
+          "status": "open",
+          "markets": [{
+            "type": "moneyline", "period": "full_game", "status": "open",
+            "rules_ref": "synthetic-including-overtime-v1",
+            "updated_at": "2026-10-28T11:59:45Z", "odds_format": "decimal",
+            "outcomes": [{"team": "BOS", "price": "1.6800"}]
+          }]
+        }
+      ]
+    },
+    {
+      "event_id": "fictional-lac-nyk",
+      "away": "Los Angeles Clippers",
+      "home": "New York Knicks",
+      "starts_at": "2026-10-29T00:00:00Z",
+      "status": "scheduled",
+      "bookmakers": [{
+        "book_id": "synthetic-a", "status": "open",
+        "markets": [{
+          "type": "moneyline", "period": "full_game", "status": "open",
+          "rules_ref": "synthetic-including-overtime-v1",
+          "updated_at": "2026-10-28T11:59:40Z", "odds_format": "decimal",
+          "outcomes": [{"team": "LAC", "price": "2.1000"}, {"team": "NYK", "price": "1.8500"}]
+        }]
+      }]
+    }
+  ]
+}

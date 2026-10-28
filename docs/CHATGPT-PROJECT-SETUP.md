@@ -10,7 +10,7 @@ same checkout GitHub Desktop uses. It reads root AGENTS.md and repository docs d
 No ZIP upload or second copy is needed for this local workflow. Do not extract a flat
 Project upload pack into the repository or docs/; that would introduce duplicate files.
 The following upload steps are only for an optional separate ChatGPT Project.
-P01/P02/P03 are implemented offline; the refreshed handoff contains their evidence notes.
+P01–P04 are implemented offline; the refreshed handoff contains their evidence notes.
 Both source adapters are synthetic-only and have no live transports.
 
 ## Install the matching reference pack
@@ -21,7 +21,7 @@ Both source adapters are synthetic-only and have no live transports.
    README.md, AGENTS.md, RECORDING-ENGINE-PROPOSAL.md, DATA-SPEC.md,
    ROADMAP-AND-PROGRESS.md, PRELIMINARY-CODE-REVIEW.md,
    P01-OFFLINE-PLANNER.md, P02-SYNTHETIC-BOOKMAKER.md, P03-SYNTHETIC-POLYMARKET.md,
-   CHATGPT-PROJECT-INSTRUCTIONS.md,
+   P04-SYNTHETIC-PAIRED-COLLECTOR.md, CHATGPT-PROJECT-INSTRUCTIONS.md,
    CHATGPT-PROJECT-SETUP.md and PROJECT-SNAPSHOT.json.
    The ZIP is a transport package; upload the extracted files, not just the ZIP.
 4. Paste the body under the title in CHATGPT-PROJECT-INSTRUCTIONS.md into the Project's
@@ -37,8 +37,8 @@ or private databases. The pack intentionally contains planning/reference files o
 “Read PROJECT-SNAPSHOT.json and the uploaded NBA planning files. State the source GitHub
 commit, the owner's confirmed recording requirements, proposed choices, unresolved
 decisions, and the next unimplemented milestone. Explain what P01 implements offline
-and the P02/P03 synthetic source archives. Confirm that real API transports,
-production paired collection and live capture have not started. Identify missing or conflicting files. If you cannot inspect a file or
+and the P02/P03 synthetic archives plus P04 persistent synthetic paired scheduling.
+Confirm that live transports, deployment and live capture have not started. Identify missing or conflicting files. If you cannot inspect a file or
 calculate its hash, say so; do not claim hash verification.”
 
 This checks context uptake, not a substitute for independently verifying byte equality.
@@ -58,10 +58,10 @@ handoff locally; only approved documentation belongs in public GitHub.
 
 ## Current implementation review prompt
 
-“Review the P01/P02/P03 implementations and their evidence notes at the manifest commit for
+“Review the P01–P04 implementations and their evidence notes at the manifest commit for
 aibuddygame/nba-arb-bot. Distinguish the offline planner and synthetic bookmaker archive
 and synthetic Polymarket snapshots from real provider/API integration and a production
-collector. Identify the next P04 offline acceptance unit and unresolved provider decisions. Do not start another milestone
+collector. Include P04 synthetic queue/retry/pairing evidence and identify the next P05 acceptance unit and unresolved provider decisions. Do not start another milestone
 or activate collection, subscriptions, email or trading.”
 
 ## Product guidance reference

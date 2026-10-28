@@ -3,6 +3,7 @@
 from contextlib import contextmanager
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from uuid import uuid4
 import sqlite3
 
 from .identities import TEAMS, team_id
@@ -72,12 +73,19 @@ class Planner:
 
     @contextmanager
     def _transaction(self):
-        self.db.execute("BEGIN IMMEDIATE")
+        # Adapter writes may participate in a fenced collector transaction.
+        nested = self.db.in_transaction
+        savepoint = "nested_" + uuid4().hex
+        self.db.execute("SAVEPOINT " + savepoint if nested else "BEGIN IMMEDIATE")
         try:
             yield
-            self.db.execute("COMMIT")
+            self.db.execute("RELEASE " + savepoint if nested else "COMMIT")
         except Exception:
-            self.db.execute("ROLLBACK")
+            if nested:
+                self.db.execute("ROLLBACK TO " + savepoint)
+                self.db.execute("RELEASE " + savepoint)
+            else:
+                self.db.execute("ROLLBACK")
             raise
 
     def _transition(self, slot, state: str, at: str, reason: str):
@@ -90,13 +98,16 @@ class Planner:
             (slot["slot_id"], slot["state"], state, at, reason))
 
     def reconcile(self, *, game_id: str, season: str, away: str, home: str,
-                  start: datetime, observed_at: datetime, status: str = "scheduled") -> int:
+                  start: datetime, observed_at: datetime, status: str = "scheduled",
+                  max_lateness_seconds: int = 0) -> int:
         """Create/reconcile one fixture atomically; return its current revision ID.
 
         game_id is an explicit durable internal identity, never derived from team words.
         A source change of start time creates a revision, not a new game. Stale or
         contradictory same-time fixture observations are rejected.
         """
+        if type(max_lateness_seconds) is not int or max_lateness_seconds < 0:
+            raise ValueError("Lateness grace must be a nonnegative integer")
         away_id, home_id = team_id(away), team_id(home)
         at, tip = stamp(observed_at), stamp(start)
         if not game_id.strip() or not season.strip() or away_id == home_id:
@@ -145,7 +156,7 @@ class Planner:
                 revision_id = cursor.lastrowid
                 for index, planned in enumerate(planned_times(start)):
                     planned_at = stamp(planned)
-                    state = self._initial_state(status, planned_at, at)
+                    state = self._initial_state(status, planned_at, at, max_lateness_seconds)
                     cursor = self.db.execute(
                         "INSERT INTO snapshot_slots(revision_id,slot_index,planned_at,state) VALUES(?,?,?,?)",
                         (revision_id, index, planned_at, state))
@@ -156,13 +167,14 @@ class Planner:
                 revision_id = previous["revision_id"]
                 for slot in self.slots(game_id, revision_id=revision_id):
                     if slot["state"] == "planned":
-                        state = self._initial_state(status, slot["planned_at"], at)
+                        state = self._initial_state(status, slot["planned_at"], at, max_lateness_seconds)
                         self._transition(slot, state, at, "fixture_reconciled")
             return revision_id
 
     @staticmethod
-    def _initial_state(status: str, planned_at: str, at: str) -> str:
-        if planned_at < at:
+    def _initial_state(status: str, planned_at: str, at: str, max_lateness_seconds: int = 0) -> str:
+        deadline = stamp(datetime.fromisoformat(planned_at) + timedelta(seconds=max_lateness_seconds))
+        if deadline < at or (status not in {"scheduled", "delayed"} and planned_at < at):
             return "missed"
         if status in {"live", "final"}:
             return "cancelled_after_start"

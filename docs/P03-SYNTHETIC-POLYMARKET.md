@@ -1,5 +1,7 @@
 # P03 synthetic Polymarket adapter — implementation and evidence
 
+Historical P03 checkpoint; subsequent integration is in [P04 notes](P04-SYNTHETIC-PAIRED-COLLECTOR.md).
+
 Date: 2026-10-28. Implemented offline; no live API, WebSocket, credentials or collection.
 Branch is based on P02 commit e8806ce (draft PR #2); P01/P02 dependencies remain unmerged
 unless their PRs are subsequently merged. This is a synthetic contract, not an assertion

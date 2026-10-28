@@ -8,7 +8,7 @@ Read PROJECT-SNAPSHOT.json for their exact source commit and SHA256 hashes. If a
 state that the uploaded version is unverified. Do not assume uploads update automatically.
 
 Read RECORDING-ENGINE-PROPOSAL.md, DATA-SPEC.md, ROADMAP-AND-PROGRESS.md and
-PRELIMINARY-CODE-REVIEW.md, P01-OFFLINE-PLANNER.md, P02-SYNTHETIC-BOOKMAKER.md and P03-SYNTHETIC-POLYMARKET.md. The owner's requirements are every NBA game, bookmaker and
+PRELIMINARY-CODE-REVIEW.md, P01-OFFLINE-PLANNER.md, P02-SYNTHETIC-BOOKMAKER.md, P03-SYNTHETIC-POLYMARKET.md and P04-SYNTHETIC-PAIRED-COLLECTOR.md. The owner's requirements are every NBA game, bookmaker and
 Polymarket observations every 30 minutes beginning 12 hours before tip-off. Preserve every
 available bookmaker separately. Coverage depends on a named, selected source universe.
 
@@ -22,8 +22,9 @@ Use this Project for research, requirements, reviewing results and refining plan
 Repository implementation follows AGENTS.md when development is requested. P01 is
 implemented and tested offline; P02 adds a synthetic-only bookmaker contract/archive.
 P03 adds a synthetic-only Polymarket archive with pinned IDs and book depth.
-Read their scope and limits. No real provider/API transport, production paired collector,
-deployment or live capture is implemented.
+P04 adds persistent paired scheduling, leases and retries for concrete local synthetic sources.
+Read their scope and limits. No real provider/API transport, deployed service or live capture
+is implemented. Synthetic policies/quotas are not approved production thresholds or billing.
 Do not initiate bets, trades, paid plans, notifications or background collection.
 
 Use documented facts only. Distinguish proposed, prepared, tested, published and live.

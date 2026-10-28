@@ -1,0 +1,39 @@
+{
+  "schema": "synthetic-polymarket-v1",
+  "synthetic": true,
+  "kind": "full_snapshot",
+  "status": "ok",
+  "events": [{
+    "event_id": "fictional-lal-bos",
+    "away": "Los Angeles Lakers",
+    "home": "Boston Celtics",
+    "starts_at": "2026-10-29T00:00:00Z",
+    "status": "scheduled",
+    "markets": [{
+      "market_id": "synthetic-moneyline-1",
+      "condition_id": "synthetic-condition-1",
+      "type": "moneyline", "period": "full_game", "status": "open",
+      "rules_ref": "synthetic-including-overtime-v1",
+      "fees": {"model": "synthetic-parabolic-v1", "rate": "0.05",
+               "currency": "synthetic-usdc", "updated_at": "2026-10-28T11:00:00Z"},
+      "outcomes": [{
+        "team": "LAL", "asset_id": "synthetic-asset-lal",
+        "updated_at": "2026-10-28T11:59:30Z", "depth_complete": true,
+        "display_price": "0.99", "volume": "500.00",
+        "last_trade": {"price": "0.56", "at": "2026-10-28T11:59:20Z"},
+        "bids": [{"price": "0.54", "size": "80"}, {"price": "0.55", "size": "100"}],
+        "asks": [{"price": "0.59", "size": "50"}, {"price": "0.58", "size": "100"}]
+      }, {
+        "team": "BOS", "asset_id": "synthetic-asset-bos",
+        "updated_at": "2026-10-28T11:59:40Z", "depth_complete": true,
+        "last_trade": {"price": "0.42", "at": "2026-10-28T11:59:30Z"},
+        "bids": [{"price": "0.40", "size": "70"}, {"price": "0.41", "size": "90"}],
+        "asks": [{"price": "0.44", "size": "60"}, {"price": "0.43", "size": "110"}]
+      }]
+    }, {
+      "market_id": "synthetic-spread-1", "condition_id": "synthetic-spread-condition-1",
+      "type": "spreads", "period": "full_game", "status": "open", "line": "-4.5",
+      "outcomes": []
+    }]
+  }]
+}

@@ -12,7 +12,7 @@ A published plan is not an implemented or deployed engine.
 | P00 | Planning baseline and Project handoff | GitHub files fetched back and compared; local matching pack with commit/hash manifest | Verified: baseline de4c156 and matching local pack; Work source-folder path verified 2026-10-28 |
 | P01 | Offline schema foundation, canonical IDs and slot planner | 29 offline tests passed; 25-slot synthetic demo; [evidence and limits](P01-OFFLINE-PLANNER.md) | Implemented and verified offline; publication/merge tracked separately |
 | P02 | Synthetic bookmaker adapter | 35 P02 tests + 29 P01 tests passed; [scope/evidence](P02-SYNTHETIC-BOOKMAKER.md) | Implemented and verified offline; real provider integration remains unresolved |
-| P03 | Polymarket adapter and moneyline mapping | Explicit event/outcome IDs, bids/asks/depth, source timestamps, fees/rules, ambiguous mapping rejection | Not started |
+| P03 | Synthetic Polymarket adapter and explicit moneyline mapping | 36 P03 + 64 retained tests passed; [scope/evidence](P03-SYNTHETIC-POLYMARKET.md) | Implemented and verified offline; live API contract/transport remain pending |
 | P04 | Persistent collector and paired moneyline snapshots | Retry/crash recovery, real timing, freshness flags, no fabricated backfills, quota accounting | Not started |
 | P05 | Daily report, CSV and results | Traceable differences, expected/completed/missing counts, source coverage, results/resolutions/corrections | Not started |
 | P06 | Exact-line spreads and totals | Signed line/period/rule matching, push handling, unpaired-line reporting | Proposed follow-on |
@@ -22,7 +22,8 @@ A published plan is not an implemented or deployed engine.
 The owner authorized P01 development on 2026-10-28 after the Work project source-folder
 change. The app now reports /Users/barrylau/Documents/GitHub/nba-arb-bot. P01 is implemented
 and verified offline. The owner subsequently authorized P02 with synthetic data only; it is
-implemented and tested offline. Provider/hosting decisions remain open; live collection is disabled.
+implemented and tested offline. P03 was subsequently authorized with synthetic data only
+and is verified offline. Provider/hosting decisions remain open; live collection is disabled.
 
 ## Decision register
 
@@ -93,3 +94,17 @@ Install/ingest rollback, restart and idempotency checks passed. No production da
 migrated. P01 remains a dependency until its draft PR is merged. P03–P08 are unimplemented.
 A real bookmaker provider contract/transport, access, rights and budget remain unresolved.
 See [P02 notes](P02-SYNTHETIC-BOOKMAKER.md). Live collection/notifications remain disabled.
+
+## P03 evidence update — 2026-10-28
+
+Synthetic Polymarket full-snapshot archive with explicit reviewed event/market/condition/asset
+bindings is implemented on top of P02. All 100 unittest cases passed under Python 3.14:
+36 P03 and 64 retained P01/P02. P03 adapter tests block socket creation. Demo returned two
+outcome quotes and eight ordered depth levels. Missing, crossed, stale, suspended and
+misidentified data do not become eligible observations. Fees/rules are preserved/validated
+against synthetic metadata only; no real fee schedule or API payload was verified.
+Schema extension is explicit; temporary synthetic databases only. Evidence, bindings and
+levels are immutable and insert-failure rollback/retry was tested. P02 now shares pure
+capture guards from synthetic.py without changing its interface. P01/P02 PRs remain stack
+dependencies until merged. P04–P08 remain unimplemented; live collection is disabled.
+See [P03 notes](P03-SYNTHETIC-POLYMARKET.md). Known legacy credential revocation is unverified.

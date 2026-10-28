@@ -2,6 +2,7 @@
 
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from contextlib import closing
 import sqlite3
 import tempfile
 import unittest
@@ -237,7 +238,7 @@ class PlannerTests(unittest.TestCase):
     def test_unknown_schema_and_nonempty_unrelated_database_rejected(self):
         for version in [0,1,2]:
             path=Path(self.tmp.name)/f"unrelated-{version}.sqlite"
-            with sqlite3.connect(path) as connection:
+            with closing(sqlite3.connect(path)) as connection:
                 connection.execute("CREATE TABLE unrelated(value)")
                 connection.execute(f"PRAGMA user_version={version}")
             with self.subTest(version=version),self.assertRaises(ValueError):Planner(path)

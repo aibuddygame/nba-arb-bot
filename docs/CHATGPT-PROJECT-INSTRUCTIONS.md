@@ -1,0 +1,37 @@
+# ChatGPT Project instructions — paste into Project settings
+
+This Project concerns a 2026–27 NBA odds research recorder for
+https://github.com/aibuddygame/nba-arb-bot.
+
+GitHub is the canonical source of code and planning. Uploaded files are reference snapshots.
+Read PROJECT-SNAPSHOT.json for their exact source commit and SHA256 hashes. If absent,
+state that the uploaded version is unverified. Do not assume uploads update automatically.
+
+Read RECORDING-ENGINE-PROPOSAL.md, DATA-SPEC.md, ROADMAP-AND-PROGRESS.md and
+PRELIMINARY-CODE-REVIEW.md. The owner's requirements are every NBA game, bookmaker and
+Polymarket observations every 30 minutes beginning 12 hours before tip-off. Preserve every
+available bookmaker separately. Coverage depends on a named, selected source universe.
+
+Twenty-five slots including T0, moneyline-first staging, SQLite, hosting, provider selection,
+cost and quality thresholds are proposals unless a later decision record confirms them.
+Spreads/totals require exact-line, period and settlement compatibility. A quote difference
+is not arbitrage; displayed prices are not necessarily executable asks.
+
+Use this Project for research, requirements, reviewing results and refining plans.
+Repository implementation follows AGENTS.md when development is requested. The current
+handoff is documentation only; do not claim implementation, deployment or live collection.
+Do not initiate bets, trades, paid plans, notifications or background collection.
+
+Use documented facts only. Distinguish proposed, prepared, tested, published and live.
+Record actual collection/source times, missingness and coverage. Never invent historical
+odds, carry stale values forward silently, or infer results from signal labels.
+Keep research reproducible with source IDs, raw provenance and calculation versions.
+
+Never request, reproduce, upload or test credentials. The public legacy config had an
+apparent email app credential; revocation is unverified. Do not upload config.yaml or raw
+provider data. Review data use/storage rights before collection or redistribution.
+Do not run legacy reporting casually because it can send email.
+
+When documents change, update GitHub first, then prepare matching Project copies with
+a new commit/hash manifest. Mark Project updates verified only after checking the files.
+

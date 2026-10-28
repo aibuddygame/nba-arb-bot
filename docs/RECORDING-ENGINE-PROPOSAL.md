@@ -1,9 +1,9 @@
 # NBA paired odds recording engine — proposal v0.1
 
 Planning date: 2026-10-28 (Asia/Singapore). Target season: 2026–27.
-Status: P01–P04 verified offline, including synthetic persistent paired scheduling.
+Status: P01–P05 verified offline, including synthetic paired scheduling, reports, CSV and results.
 Live provider transport and live collection are disabled/unimplemented.
-See [P01 scope](P01-OFFLINE-PLANNER.md) and [P02 scope](P02-SYNTHETIC-BOOKMAKER.md), plus [P03 scope](P03-SYNTHETIC-POLYMARKET.md) and [P04 scope](P04-SYNTHETIC-PAIRED-COLLECTOR.md).
+See [P01 scope](P01-OFFLINE-PLANNER.md) and [P02 scope](P02-SYNTHETIC-BOOKMAKER.md), plus [P03 scope](P03-SYNTHETIC-POLYMARKET.md) and [P04 scope](P04-SYNTHETIC-PAIRED-COLLECTOR.md) and [P05 scope](P05-SYNTHETIC-REPORTS-RESULTS.md).
 
 ## Purpose
 
@@ -80,6 +80,8 @@ Polymarket observation references. Distinct comparison rows can share one source
 
 After games, attach final score, game status and separately the Polymarket resolution,
 payout and resolution time. Record corrections and unresolved/void outcomes explicitly.
+P05 implements this with invented synthetic contracts and as-of reports. Daily scheduling,
+live results, book consensus, depth-based costs and research evaluation remain future work.
 
 ## Research plan
 

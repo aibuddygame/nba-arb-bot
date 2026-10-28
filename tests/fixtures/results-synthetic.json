@@ -1,0 +1,11 @@
+{
+  "schema": "synthetic-results-v1",
+  "synthetic": true,
+  "records": [{
+    "record_id": "synthetic-result-1", "game_id": "fictional-lal-bos",
+    "away": "LAL", "home": "BOS", "scheduled_start_utc": "2026-10-29T00:00:00Z",
+    "version": 1, "supersedes_record_id": null, "status": "final",
+    "away_score": 110, "home_score": 100,
+    "published_at": "2026-10-29T03:05:00Z", "final_at": "2026-10-29T03:00:00Z"
+  }]
+}

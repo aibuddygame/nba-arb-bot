@@ -1,0 +1,11 @@
+{
+  "schema": "synthetic-resolutions-v1",
+  "synthetic": true,
+  "records": [{
+    "record_id": "synthetic-resolution-1", "binding_id": "synthetic-binding",
+    "event_id": "fictional-lal-bos", "market_id": "synthetic-moneyline-1",
+    "condition_id": "synthetic-condition-1", "version": 1, "supersedes_record_id": null,
+    "status": "resolved", "payouts": {"synthetic-asset-lal": "1", "synthetic-asset-bos": "0"},
+    "published_at": "2026-10-29T03:35:00Z", "resolved_at": "2026-10-29T03:30:00Z"
+  }]
+}

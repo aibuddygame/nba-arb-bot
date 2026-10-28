@@ -1,8 +1,8 @@
 # NBA Arbitrage Bot / NBA odds research recorder
 
 This repository contains the original Python snapshot/report prototype and a proposed
-2026–27 paired odds recording engine. **P01–P04 are implemented and tested offline, including persistent paired
-scheduling for synthetic bookmaker/Polymarket sources. Live collection is disabled.**
+2026–27 paired odds recording engine. **P01–P05 are implemented and tested offline, including synthetic paired
+scheduling, daily reports, CSV exports and versioned scores/resolutions. Live collection is disabled.**
 The goal is a research history of bookmaker and Polymarket quotes every 30 minutes starting
 12 hours before every NBA game. Twenty-five slots including scheduled tip-off is proposed;
 actual source coverage, provider, budget and live deployment remain unresolved.
@@ -18,7 +18,7 @@ actual source coverage, provider, budget and live deployment remain unresolved.
 - [Matching-file upload and refresh guide](docs/CHATGPT-PROJECT-SETUP.md)
 
 GitHub is canonical. ChatGPT Project files are explicit commit/hash snapshots.
-The owner authorized P01 and then P02/P03/P04 with synthetic data only on 2026-10-28.
+The owner authorized P01 and then P02/P03/P04/P05 with synthetic data only on 2026-10-28.
 Live activation remains outside the current scope.
 
 ## Legacy prototype status
@@ -89,8 +89,26 @@ PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m nba_arb_bot.recorder.collect
 
 The demo resumes after reopening its database. Its intentionally incomplete fixture yields
 8 pair records, 2 eligible pairs and a partial slot. Add --database data-private/p04-synthetic.sqlite
-for an idempotent persistent replay. The full offline suite contains 144 passing tests.
+for an idempotent persistent replay. The P04 checkpoint had 144 passing tests.
 No background daemon or live transport is enabled.
+
+## P05 daily reports, CSV and results (synthetic only)
+
+- [Report semantics, result corrections, exports and evidence](docs/P05-SYNTHETIC-REPORTS-RESULTS.md)
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m nba_arb_bot.recorder.reporting_demo \
+  --bookmaker-fixture tests/fixtures/bookmaker-synthetic.json \
+  --polymarket-fixture tests/fixtures/polymarket-synthetic.json \
+  --results-fixture tests/fixtures/results-synthetic.json \
+  --resolutions-fixture tests/fixtures/resolutions-synthetic.json \
+  --output exports-private/p05-synthetic-demo
+```
+
+Use a new output directory. The demo exports Markdown/JSON, seven CSVs and a hash manifest.
+Reports require an explicit knowledge cutoff; scores and market payouts are tracked separately.
+The full offline suite has 183 passing tests (39 P05 + 144 retained). There is no scheduled
+report service, email, live result feed, P&L or execution. P06 spreads/totals is next proposed work.
 
 ## Legacy setup reference
 

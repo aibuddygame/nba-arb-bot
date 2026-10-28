@@ -14,7 +14,7 @@ A published plan is not an implemented or deployed engine.
 | P02 | Synthetic bookmaker adapter | 35 P02 tests + 29 P01 tests passed; [scope/evidence](P02-SYNTHETIC-BOOKMAKER.md) | Implemented and verified offline; real provider integration remains unresolved |
 | P03 | Synthetic Polymarket adapter and explicit moneyline mapping | 36 P03 + 64 retained tests passed; [scope/evidence](P03-SYNTHETIC-POLYMARKET.md) | Implemented and verified offline; live API contract/transport remain pending |
 | P04 | Synthetic persistent collector and paired moneyline snapshots | 44 P04 + 100 retained tests passed; [scope/evidence](P04-SYNTHETIC-PAIRED-COLLECTOR.md) | Implemented and verified offline; live transports/service remain disabled |
-| P05 | Daily report, CSV and results | Traceable differences, expected/completed/missing counts, source coverage, results/resolutions/corrections | Not started |
+| P05 | Synthetic daily report, CSV and results | 39 P05 + 144 retained tests passed; [scope/evidence](P05-SYNTHETIC-REPORTS-RESULTS.md) | Implemented and verified offline; live results/report service remain disabled |
 | P06 | Exact-line spreads and totals | Signed line/period/rule matching, push handling, unpaired-line reporting | Proposed follow-on |
 | P07 | Bounded live pilot | Selected provider/access/budget/host; credential remediation; measured timing and data-quality report; private backup/restore proof | Not started; requires live activation decision |
 | P08 | Forward research | Versioned methods, chronological game splits, coverage bias, game-clustered uncertainty, cost-aware paper evaluation | Not started |
@@ -24,7 +24,8 @@ change. The app now reports /Users/barrylau/Documents/GitHub/nba-arb-bot. P01 is
 and verified offline. The owner subsequently authorized P02 with synthetic data only; it is
 implemented and tested offline. P03 was subsequently authorized with synthetic data only
 and is verified offline. P04 was then authorized with synthetic sources only and is verified
-offline. Provider/hosting decisions remain open; live collection is disabled.
+offline. P05 reports, CSV and independently versioned synthetic scores/resolutions were then
+authorized and verified offline. Provider/hosting decisions remain open; live collection is disabled.
 
 ## Decision register
 
@@ -123,3 +124,19 @@ fail-closed. Thresholds and source budgets are synthetic examples, not live deci
 See [P04 notes](P04-SYNTHETIC-PAIRED-COLLECTOR.md). P05–P08 are unimplemented. No live
 transport, actual provider billing/quota, background service or production database migration
 was exercised. Earlier PRs remain dependencies until merged; no merges are claimed here.
+
+## P05 evidence update — 2026-10-28
+
+Read-only daily reporting, seven stable CSV exports, hashed bundles and independent synthetic
+score/market-resolution correction chains are implemented. All 183 unittest cases passed on
+Python 3.14 (39 P05 + 144 retained); P05 tests block socket creation. Reports reconstruct
+slot/attempt state at explicit knowledge cutoffs, distinguish planned coverage from receipt-day
+activity and retain older revisions and unresolved payouts. Per-book proportional de-vig and
+midpoint/ask differences run only on eligible pairs; they are not profit or executable arbitrage.
+Demo: eight pairs/two eligible, one partial slot and seven unprocessed overdue slots in the
+Oct 28 Singapore cohort; one fictional score and independently recorded binary resolution.
+Midnight/DST, correction lookahead, immutability, rollback/retry, read-only access, CSV nulls,
+formula escaping, hashes and overwrite refusal passed. No live transport, scheduled report
+service, notification, production migration or new credential use occurred. Draft PR #4 remains
+an unmerged dependency at preparation; P06–P08 remain unimplemented. See [P05 notes](P05-SYNTHETIC-REPORTS-RESULTS.md).
+Earlier evidence updates are historical checkpoints; their then-future statuses are not current.

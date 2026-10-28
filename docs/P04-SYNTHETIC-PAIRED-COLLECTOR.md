@@ -1,5 +1,7 @@
 # P04 persistent paired scheduler — synthetic implementation
 
+Historical P04 checkpoint; subsequent reporting/results are in [P05 notes](P05-SYNTHETIC-REPORTS-RESULTS.md).
+
 Date: 2026-10-28. Implemented offline on P03 commit 46123c2 (draft PR #3 dependency).
 Live collection remains disabled. There is no REST/WebSocket transport or installed daemon.
 

@@ -9,10 +9,10 @@ GitHub is the canonical source; ChatGPT Project uploads are versioned reference 
 ## Current boundary
 
 The owner authorized planning publication and then P01 offline development on 2026-10-28.
-P01–P04 are implemented and verified offline. The owner authorized P02/P03/P04
+P01–P05 are implemented and verified offline. The owner authorized P02/P03/P04/P05
 using synthetic data only; see docs/P01-OFFLINE-PLANNER.md,
-docs/P02-SYNTHETIC-BOOKMAKER.md, docs/P03-SYNTHETIC-POLYMARKET.md and
-docs/P04-SYNTHETIC-PAIRED-COLLECTOR.md.
+docs/P02-SYNTHETIC-BOOKMAKER.md, docs/P03-SYNTHETIC-POLYMARKET.md,
+docs/P04-SYNTHETIC-PAIRED-COLLECTOR.md and docs/P05-SYNTHETIC-REPORTS-RESULTS.md.
 Paid subscriptions,
 deployment, background collection, notifications, betting and trading remain outside scope.
 Work on the next development milestone when requested. Record proposals separately from

@@ -7,8 +7,9 @@ records; gzip raw bytes are stored inside SQLite for atomic persistence. This is
 complete target schema below. P03 adds an explicit synthetic Polymarket extension for
 pinned market/outcome bindings, captures, quotes, fee/rule metadata and ordered depth levels.
 P04 adds an explicit synthetic queue, lease/attempt/result and quota ledgers, immutable
-policies and versioned per-slot/book/team pairings. Results, reporting and analysis remain
-later work. See [P04 boundaries](P04-SYNTHETIC-PAIRED-COLLECTOR.md).
+policies and versioned per-slot/book/team pairings. P05 adds an explicitly installed synthetic
+results/resolutions extension, read-only daily reports and versioned CSV bundles. Broader
+consensus/cost-aware research analysis remains future work. See [P05 semantics](P05-SYNTHETIC-REPORTS-RESULTS.md). See [P04 boundaries](P04-SYNTHETIC-PAIRED-COLLECTOR.md).
 See [P02 scope](P02-SYNTHETIC-BOOKMAKER.md) and [P03 scope](P03-SYNTHETIC-POLYMARKET.md).
 See [P01 implementation boundary](P01-OFFLINE-PLANNER.md).
 Companion: [proposal](RECORDING-ENGINE-PROPOSAL.md).
@@ -111,3 +112,18 @@ holds specifications and synthetic fixtures, not production response bodies or c
 Redact authorization headers and API keys from URLs/logs before persistence.
 Backups, retention duration and recovery objectives must be selected before live operation.
 
+
+## P05 implemented reporting boundary
+
+Report version synthetic-daily-report-v1 and calculation version per-book-proportional-v1
+implement eligible per-book fair probabilities and midpoint/ask differences only. Consensus,
+minimum-book policy, costs, fill simulation and research performance evaluation above remain
+proposals. The reporter has no automatic schedule or notification side effects.
+
+The planned cohort and receipt-day activity have separate denominators. Slot audit events,
+schedule revisions, attempt results and result/resolution versions are selected at explicit
+as_of. Unknown values stay null; overdue unprocessed slots are surfaced without mutation.
+Scores/resolutions use independent append-only version chains and raw hashes. Report labels
+are known at report cutoff, not necessarily at the historical quote time. Exact contracts,
+CSV columns, export escaping and reproduction are in the P05 notes. Export schema version 1
+includes seven CSV tables, Markdown/JSON and a completion/hash manifest, without raw bodies.

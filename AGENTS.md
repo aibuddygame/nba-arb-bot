@@ -8,10 +8,11 @@ GitHub is the canonical source; ChatGPT Project uploads are versioned reference 
 
 ## Current boundary
 
-The owner authorized preparation and GitHub publication of planning documents on
-2026-10-28. This does not start engine development, paid subscriptions, deployment,
-background collection, notifications, betting or trading. Work on the next development
-milestone when requested. Record proposals separately from confirmed owner requirements.
+The owner authorized planning publication and then P01 offline development on 2026-10-28.
+P01 is implemented and verified offline; see docs/P01-OFFLINE-PLANNER.md. Paid subscriptions,
+deployment, background collection, notifications, betting and trading remain outside scope.
+Work on the next development milestone when requested. Record proposals separately from
+confirmed owner requirements.
 
 ## Working practices
 

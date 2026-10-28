@@ -1,15 +1,26 @@
 # ChatGPT Project handoff and refresh instructions
 
-Prepared: 2026-10-28. No ChatGPT Project upload or settings change is claimed.
+Updated: 2026-10-28. Local Work source-folder association verified.
+No separate uploaded-source ChatGPT Project installation is claimed.
+
+## Current local Work setup
+
+The local Work project now points to /Users/barrylau/Documents/GitHub/nba-arb-bot, the
+same checkout GitHub Desktop uses. It reads root AGENTS.md and repository docs directly.
+No ZIP upload or second copy is needed for this local workflow. Do not extract a flat
+Project upload pack into the repository or docs/; that would introduce duplicate files.
+The following upload steps are only for an optional separate ChatGPT Project.
+P01 is implemented offline; the refreshed handoff contains its evidence note.
 
 ## Install the matching reference pack
 
 1. Create or open your NBA odds research ChatGPT Project.
-2. Extract the supplied chatgpt-project-upload.zip locally.
+2. Extract the supplied versioned upload ZIP outside the repository.
 3. Upload the individual files from its flat directory as Project sources:
    README.md, AGENTS.md, RECORDING-ENGINE-PROPOSAL.md, DATA-SPEC.md,
    ROADMAP-AND-PROGRESS.md, PRELIMINARY-CODE-REVIEW.md,
-   CHATGPT-PROJECT-INSTRUCTIONS.md, CHATGPT-PROJECT-SETUP.md and PROJECT-SNAPSHOT.json.
+   P01-OFFLINE-PLANNER.md, CHATGPT-PROJECT-INSTRUCTIONS.md,
+   CHATGPT-PROJECT-SETUP.md and PROJECT-SNAPSHOT.json.
    The ZIP is a transport package; upload the extracted files, not just the ZIP.
 4. Paste the body under the title in CHATGPT-PROJECT-INSTRUCTIONS.md into the Project's
    instructions setting. An uploaded instruction document alone is not a verified setting.
@@ -23,8 +34,8 @@ or private databases. The pack intentionally contains planning/reference files o
 
 “Read PROJECT-SNAPSHOT.json and the uploaded NBA planning files. State the source GitHub
 commit, the owner's confirmed recording requirements, proposed choices, unresolved
-decisions, and the first development milestone. Confirm that development and live collection
-have not started. Identify missing or conflicting files. If you cannot inspect a file or
+decisions, and the next unimplemented milestone. Explain what P01 implements offline
+and confirm that provider adapters and live collection have not started. Identify missing or conflicting files. If you cannot inspect a file or
 calculate its hash, say so; do not claim hash verification.”
 
 This checks context uptake, not a substitute for independently verifying byte equality.
@@ -42,14 +53,13 @@ The manifest is generated after publication and is a delivery artifact, not a se
 file that tries to contain its own Git commit/hash. Keep the manifest and archive with the
 handoff locally; only approved documentation belongs in public GitHub.
 
-## First development prompt (use when ready)
+## P01 review prompt
 
-“Use the published planning baseline for aibuddygame/nba-arb-bot. Implement P01 only:
-offline data schema, canonical identities and the game-relative slot planner. Inspect the
-actual checkout and AGENTS.md first. Verify 25 slots, UTC/DST handling, restarts/idempotency,
-late discovery, schedule revisions, cancellations and early starts. Use synthetic fixtures.
-Do not activate live collection, subscriptions, email or trading. Report exact checks and
-update progress only for demonstrated work.”
+“Review the P01 implementation and P01-OFFLINE-PLANNER.md at the manifest commit for
+aibuddygame/nba-arb-bot. Distinguish implemented offline schema/planner behaviour from
+unimplemented provider adapters and the production collection runner. Identify the next
+P02 acceptance unit and unresolved provider decisions. Do not start another milestone
+or activate collection, subscriptions, email or trading.”
 
 ## Product guidance reference
 

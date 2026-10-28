@@ -39,3 +39,11 @@ reports/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Private recorder evidence and exports
+data-private/
+exports-private/
+raw/
+
+# Generated documentation handoff packages
+/deliverables/

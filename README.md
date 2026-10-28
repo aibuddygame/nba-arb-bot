@@ -1,7 +1,8 @@
 # NBA Arbitrage Bot / NBA odds research recorder
 
 This repository contains the original Python snapshot/report prototype and a proposed
-2026–27 paired odds recording engine. The new engine is **planned, not implemented or live**.
+2026–27 paired odds recording engine. **P01 is implemented and tested offline; collectors
+and live operation are not implemented.**
 The goal is a research history of bookmaker and Polymarket quotes every 30 minutes starting
 12 hours before every NBA game. Twenty-five slots including scheduled tip-off is proposed;
 actual source coverage, provider, budget and live deployment remain unresolved.
@@ -17,7 +18,8 @@ actual source coverage, provider, budget and live deployment remain unresolved.
 - [Matching-file upload and refresh guide](docs/CHATGPT-PROJECT-SETUP.md)
 
 GitHub is canonical. ChatGPT Project files are explicit commit/hash snapshots.
-The planning publication does not authorize engine development or live activation.
+The owner authorized P01 development on 2026-10-28 after verifying the local Project
+source folder. Live activation remains outside the current scope.
 
 ## Legacy prototype status
 
@@ -28,13 +30,27 @@ results study, backtest or paper-trading ledger. Signal labels do not establish 
 An apparent email app credential was observed in the existing public legacy configuration.
 Revocation has not been verified. Do not reproduce/test it. Legacy report generation can
 send email even when dry_run=true; review local configuration before running anything.
-The original code and configuration are preserved by this documentation-only update.
+The legacy code and configuration are preserved by the P01 implementation.
+
+## P01 offline planner
+
+- [Implemented scope, behaviour and acceptance evidence](docs/P01-OFFLINE-PLANNER.md)
+- Source: src/nba_arb_bot/recorder/; tests: tests/test_recorder.py
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m unittest discover -s tests -v
+PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m nba_arb_bot.recorder --demo
+```
+
+P01 uses the Python standard library and temporary synthetic databases. No legacy config,
+provider credentials or legacy dependencies are needed. The demo does not start collection.
+Private raw responses, databases and exports belong outside Git.
 
 ## Legacy setup reference
 
 The following instructions describe the existing prototype, not the proposed engine.
-The documented pytest command currently has no collected test cases; tests contains only
-its package initializer. Future engine checks are defined in the roadmap.
+P01 has a dependency-free offline test suite and synthetic demo. See the commands below;
+the remaining setup instructions describe only the legacy application.
 
 ## Requirements
 
